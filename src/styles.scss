@@ -1,1 +1,14 @@
-/* You can add global styles to this file, and also import other style files */
+@import "assets/styles/buttons";
+@import "assets/styles/dialogs";
+@import "assets/styles/font";
+@import "assets/styles/form";
+@import "assets/styles/helpers";
+@import "assets/styles/reset";
+@import "assets/styles/typography";
+@import "assets/styles/variables";
+
+html {
+  background-color: $bg-color;
+  font-family: 'Open Sans', sans-serif;
+  min-height: 100vh;
+}
