@@ -3,11 +3,11 @@
 button{
   background-color: $bg-color;
   border: none;
-  border-radius: 15px;
+  border-radius: 18px;
   box-shadow: create-shadow('out', $black-shadow, $white-shadow);
   color: $green;
   cursor: pointer;
-  font-size: 14px;
+  font-size: 16px;
   font-weight: 400;
   letter-spacing: 1.25px;
   padding: 10px 20px;
