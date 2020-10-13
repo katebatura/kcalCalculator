@@ -1,0 +1,16 @@
+@import "variables";
+
+button{
+  background-color: $bg-color;
+  border: none;
+  border-radius: 15px;
+  box-shadow: create-shadow('out', $black-shadow, $white-shadow);
+  color: $green;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 400;
+  letter-spacing: 1.25px;
+  padding: 10px 20px;
+  text-align: center;
+  text-transform: uppercase;
+}

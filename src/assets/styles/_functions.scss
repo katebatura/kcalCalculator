@@ -1,0 +1,16 @@
+@function get-color($color, $opacity: 1){
+  @return rgba(
+    red($color),
+    green($color),
+    blue($color),
+    $opacity
+  );
+}
+
+@function create-shadow($dir-inset, $shadow1, $shadow2: null, $shadow3: null){
+  @if $dir-inset == 'inset' {
+    @return inset $shadow1, inset $shadow2, inset $shadow3;
+  } @else {
+    @return $shadow1, $shadow2, $shadow3;
+  }
+}
