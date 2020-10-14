@@ -9,13 +9,14 @@ import {MatDatepickerModule} from "@angular/material/datepicker";
 import {MatDialogModule} from "@angular/material/dialog";
 import {MatMenuModule} from '@angular/material/menu';
 import {MatTooltipModule} from '@angular/material/tooltip';
+import {MatIconModule} from '@angular/material/icon';
 
 @NgModule({
   declarations: [],
   imports: [
     FormsModule,
     ReactiveFormsModule,
-    PerfectScrollbarModule
+    PerfectScrollbarModule,
   ],
   exports: [
     CommonModule,
@@ -27,6 +28,7 @@ import {MatTooltipModule} from '@angular/material/tooltip';
     MatDialogModule,
     MatMenuModule,
     MatTooltipModule,
+    MatIconModule,
   ]
 })
 export class SharedModule{}
