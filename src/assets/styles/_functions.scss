@@ -8,8 +8,13 @@
 }
 
 @function create-shadow($dir-inset, $shadow1, $shadow2: null, $shadow3: null){
-  @if $dir-inset == 'inset' {
-    @return inset $shadow1, inset $shadow2, inset $shadow3;
+  @if $dir-inset == 'inset'{
+    @if $shadow3 != null {
+      @return inset $shadow1, inset $shadow2, inset $shadow3;
+    }@else {
+      @return inset $shadow1, inset $shadow2;
+    }
+
   } @else {
     @return $shadow1, $shadow2, $shadow3;
   }

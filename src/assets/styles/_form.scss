@@ -1,0 +1,48 @@
+@import "variables";
+form{
+  align-items: center;
+  display: flex;
+  font-size: 14px;
+  line-height: 16px;
+
+  label{
+    color: $gray;
+    display: block;
+  }
+
+  input{
+    background-color: $bg-color;
+    border: none;
+    border-radius: 15px;
+    box-shadow: $inset-shadow;
+    color: $dark-gray;
+    display: block;
+    font-family: 'Open Sans', sans-serif;
+    height: 38px;
+    outline: none;
+    position: relative;
+
+    &:focus{
+      box-shadow: $inset-shadow-form-active;
+    }
+
+    &.ng-invalid.ng-touched{
+      box-shadow: $inset-shadow-form-error;
+    }
+  }
+
+  .a::before{
+    content: '';
+    width: 500px;
+    height: 100%;
+    display: block;
+    z-index: 1;
+    position: relative;
+    padding: 15px;
+    left: -15px;
+    top: -15px;
+    background-color: $red;
+    border-radius: 18px;
+    box-shadow: $outset-shadow;
+  }
+}

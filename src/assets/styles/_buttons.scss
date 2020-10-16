@@ -5,8 +5,8 @@ button{
   background-color: $bg-color;
   border: none;
   border-radius: 18px;
-  box-shadow: create-shadow('out', $black-shadow, $white-shadow);
-  color: $green;
+  box-shadow: $outset-shadow;
+  color: $main;
   cursor: pointer;
   display: flex;
   font-size: 14px;
@@ -23,7 +23,7 @@ button{
   }
 
   &.intense{
-    background-color: $green;
+    background-color: $main;
     color: $bg-color;
   }
 

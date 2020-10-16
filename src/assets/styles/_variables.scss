@@ -7,8 +7,8 @@ $gray: #4f4f4f;
 $light-gray: #828282;
 
 $light-blue: #00E0DD;
-$light-green: #96cba4;
-$green: #00663c;
+$second-color: #96cba4;
+$main: #00663c;
 $red: #dd0000;
 $yellow: #ffb20f;
 
@@ -23,5 +23,10 @@ $white-shadow-blur: -10px -10px 20px get-color(#fff, .9);
 $white-shadow-intense: -5px -5px 5px get-color(#fff, .15);
 $white-shadow-intense-blur: -5px -5px 10px get-color(#fff, .15);
 
-$active-shadow: 0 0 5px 2px get-color($green, .5);
+$active-shadow: 0 0 5px 2px get-color($main, .5);
 $error-shadow: 0 0 5px 2px get-color($red, .5);
+
+$outset-shadow: create-shadow('out', $black-shadow, $white-shadow);
+$inset-shadow: create-shadow('inset', $black-shadow, $white-shadow);
+$inset-shadow-form-active: create-shadow('inset', $black-shadow, $white-shadow, $active-shadow);
+$inset-shadow-form-error: create-shadow('inset', $black-shadow, $white-shadow, $error-shadow);
