@@ -7,42 +7,52 @@ form{
 
   label{
     color: $gray;
-    display: block;
   }
 
-  input{
+  .input-wrapper{
     background-color: $bg-color;
-    border: none;
-    border-radius: 15px;
-    box-shadow: $inset-shadow;
-    color: $dark-gray;
-    display: block;
-    font-family: 'Open Sans', sans-serif;
-    height: 38px;
-    outline: none;
-    position: relative;
-
-    &:focus{
-      box-shadow: $inset-shadow-form-active;
-    }
-
-    &.ng-invalid.ng-touched{
-      box-shadow: $inset-shadow-form-error;
-    }
-  }
-
-  .a::before{
-    content: '';
-    width: 500px;
-    height: 100%;
-    display: block;
-    z-index: 1;
-    position: relative;
-    padding: 15px;
-    left: -15px;
-    top: -15px;
-    background-color: $red;
     border-radius: 18px;
     box-shadow: $outset-shadow;
+    min-width: 104px!important;
+    padding: 2px;
+    position: relative;
+
+    input{
+      background-color: $bg-color;
+      border: none;
+      border-radius: 15px;
+      box-shadow: $inset-shadow;
+      color: $dark-gray;
+      display: block;
+      font-family: 'Open Sans', sans-serif;
+      height: 38px;
+      min-width: 100px!important;
+      outline: none;
+      padding: 0 35px 0 15px;
+      width: 100%;
+
+      &:focus{
+        box-shadow: $inset-shadow-form-active;
+      }
+
+      &.ng-invalid.ng-touched{
+        box-shadow: $inset-shadow-form-error;
+      }
+    }
+
+    mat-icon{
+      position: absolute;
+      top:10px;
+      right: 5px;
+    }
   }
+}
+
+.toddler {
+  background-color: $bg-color;
+  border-radius: 50%;
+  box-shadow: $outset-shadow;
+  cursor: pointer;
+  height: 40px;
+  width: 40px;
 }

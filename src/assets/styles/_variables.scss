@@ -17,11 +17,13 @@ $black-shadow: 5px 5px 15px get-color(#000, .1);
 $black-shadow-blur: 10px 10px 20px get-color(#000, .1);
 $black-shadow-intense: 5px 5px 5px get-color(#000, .8);
 $black-shadow-intense-blur: 5px 5px 10px get-color(#000, .8);
+$black-shadow-disable: 3px 3px 5px get-color(#000, .8);
 
 $white-shadow: -5px -5px 15px get-color(#fff, .9);
 $white-shadow-blur: -10px -10px 20px get-color(#fff, .9);
 $white-shadow-intense: -5px -5px 5px get-color(#fff, .15);
 $white-shadow-intense-blur: -5px -5px 10px get-color(#fff, .15);
+$white-shadow-disable: -3px -3px 5px get-color(#fff, .15);
 
 $active-shadow: 0 0 5px 2px get-color($main, .5);
 $error-shadow: 0 0 5px 2px get-color($red, .5);
@@ -30,3 +32,5 @@ $outset-shadow: create-shadow('out', $black-shadow, $white-shadow);
 $inset-shadow: create-shadow('inset', $black-shadow, $white-shadow);
 $inset-shadow-form-active: create-shadow('inset', $black-shadow, $white-shadow, $active-shadow);
 $inset-shadow-form-error: create-shadow('inset', $black-shadow, $white-shadow, $error-shadow);
+$inset-shadow-form-disable: create-shadow('inset', $black-shadow-disable, $white-shadow-disable);
+$outset-shadow-form-disable: create-shadow('out', $black-shadow-disable, $white-shadow-disable);

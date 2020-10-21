@@ -1,0 +1,58 @@
+@import "variables";
+
+.card-wrapper{
+  background: $bg-color;
+  border-radius: 35px;
+  box-sizing: border-box;
+  box-shadow: $outset-shadow;
+  padding: 30px;
+  position: relative;
+  width: 100%;
+
+  .title{
+    color: $gray;
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 30px;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+  }
+
+  &~div.loader{
+    align-items: flex-start!important;
+    height: 100vh !important;
+    padding-top: 50px;
+  }
+
+  .photo{
+    display: inline-block;
+    background-color: $bg-color;
+    border-radius: 50%;
+    box-shadow: $outset-shadow;
+    height: 70px;
+    position: relative;
+    width: 70px;
+
+    img {
+      background-color: $bg-color;
+      border-radius: 50%;
+      box-shadow: $inset-shadow;
+      height: 66px;
+      left: 2px;
+      padding: 3px;
+      position: absolute;
+      top: 2px;
+      width: 66px;
+    }
+  }
+}
+
+.app-wrapper {
+  margin: 30px;
+
+  &~div.loader{
+    align-items: center!important;
+    height: 100vh !important;
+    padding-top: 0;
+  }
+}
