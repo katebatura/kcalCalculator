@@ -12,10 +12,9 @@
   .title{
     color: $gray;
     font-size: 20px;
-    font-weight: 500;
+    font-weight: 700;
     line-height: 30px;
     margin-bottom: 20px;
-    text-transform: uppercase;
   }
 
   &~div.loader{
@@ -44,6 +43,40 @@
       top: 2px;
       width: 66px;
     }
+
+    div{
+      background-color: $bg-color;
+      border-radius: 50%;
+      box-shadow: $inset-shadow;
+      height: 66px;
+      left: 2px;
+      padding: 3px;
+      position: absolute;
+      top: 2px;
+      width: 66px;
+
+      &:before{
+        background-color: $gray;
+        border-radius: 50%;
+        content: '';
+        display: inline-block;
+        height: 60px;
+        opacity: .2;
+        width: 60px;
+      }
+    }
+  }
+
+  .card-pos-t-r{
+    position: absolute;
+    right: 30px;
+    top: 30px;
+  }
+
+  footer{
+    align-items: center;
+    display: flex;
+    justify-content: flex-end;
   }
 }
 

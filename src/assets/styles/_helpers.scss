@@ -66,3 +66,17 @@
 .ml-a{margin-left: auto;}
 .mr-a{margin-right: auto;}
 .p0{padding: 0!important;}
+
+.relative{position: relative;}
+
+.pos-t-r{
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+.pos-b-r{
+  bottom: 0;
+  position: absolute;
+  right: 0;
+}

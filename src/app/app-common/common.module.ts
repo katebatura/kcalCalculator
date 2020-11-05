@@ -1,6 +1,7 @@
 import {NgModule} from '@angular/core';
 
 import {CommonRoutingModule} from './common-routing.module';
+import {SharedModule} from '../shared/shared.module';
 
 import {CommonComponent} from './components/common.component';
 
@@ -18,7 +19,11 @@ import {SaveRecipeComponent} from './components/presentational/recipe/save-recip
     RecipeEditorComponent,
     SaveRecipeComponent,
   ],
-  imports: [CommonRoutingModule],
+  imports: [
+    CommonRoutingModule,
+
+    SharedModule
+  ],
   exports: [],
   providers: []
 })

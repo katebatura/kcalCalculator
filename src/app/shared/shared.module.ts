@@ -11,8 +11,14 @@ import {MatMenuModule} from '@angular/material/menu';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatIconModule} from '@angular/material/icon';
 
+import {BtnLoadDirective} from './directives/btn-load.directive';
+import {PreloaderDirective} from './directives/preloader.directive';
+
 @NgModule({
-  declarations: [],
+  declarations: [
+    BtnLoadDirective,
+    PreloaderDirective,
+  ],
   imports: [
     FormsModule,
     ReactiveFormsModule,
@@ -29,6 +35,9 @@ import {MatIconModule} from '@angular/material/icon';
     MatMenuModule,
     MatTooltipModule,
     MatIconModule,
+
+    BtnLoadDirective,
+    PreloaderDirective,
   ]
 })
 export class SharedModule{}

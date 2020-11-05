@@ -7,3 +7,25 @@ h1{
   letter-spacing: 1px;
   line-height: 40px;
 }
+
+.ellipsis {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.uppercase {
+  text-transform: uppercase;
+}
+
+.align-center {
+  text-align: center;
+}
+
+.red{
+  color: $red;
+}
+
+.yellow{
+  color: $yellow;
+}

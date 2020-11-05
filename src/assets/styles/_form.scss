@@ -38,6 +38,15 @@ form{
       &.ng-invalid.ng-touched{
         box-shadow: $inset-shadow-form-error;
       }
+
+      &::placeholder{
+        color: $light-gray;
+        font-family: 'Open Sans', sans-serif;
+        font-size: 14px;
+        font-weight: 400;
+        letter-spacing: 1px;
+        opacity: 0.7;
+      }
     }
 
     mat-icon{
