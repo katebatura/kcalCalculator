@@ -1,7 +1,12 @@
 import {NgModule} from '@angular/core';
+import {EffectsModule} from "@ngrx/effects";
+import {StoreModule} from "@ngrx/store";
 
 import {CommonRoutingModule} from './common-routing.module';
 import {SharedModule} from '../shared/shared.module';
+
+import {reducers} from "./store";
+import {RecipesEffects} from "./store/effects/recipes.effects";
 
 import {CommonComponent} from './components/common.component';
 
@@ -22,7 +27,12 @@ import {SaveRecipeComponent} from './components/presentational/recipe/save-recip
   imports: [
     CommonRoutingModule,
 
-    SharedModule
+    SharedModule,
+
+    EffectsModule.forFeature([
+      RecipesEffects
+    ]),
+    StoreModule.forFeature('common', reducers),
   ],
   exports: [],
   providers: []

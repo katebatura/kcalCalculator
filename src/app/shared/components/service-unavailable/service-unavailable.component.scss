@@ -1,0 +1,63 @@
+@import "variables";
+
+div {
+  position: relative;
+
+  .service-unavailable{
+    align-items: center;
+    display: flex;
+
+    &.small{
+      align-items: center;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 25px 17px;
+
+      [class^="icon-"]{
+        color: $lwo-corp-color;
+        font-size: 44px;
+        margin-bottom: 20px;
+      }
+
+      p{
+        color: $black;
+        font-size: 1rem;
+        font-weight: 500;
+        line-height: 1.25rem;
+        margin-bottom: 16px;
+        text-align: center;
+      }
+    }
+
+    img {
+      margin-right: 55px;
+      width: 218px;
+    }
+
+    p {
+      color: $gray;
+      font-size: 1rem;
+      line-height: 1.25rem;
+      margin-bottom: 30px;
+    }
+
+    button{
+      text-transform: uppercase;
+    }
+  }
+
+  .loader-container {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    width: 100%;
+
+    .loader {
+      width: 90px;
+    }
+  }
+}

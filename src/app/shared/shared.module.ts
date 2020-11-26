@@ -11,13 +11,19 @@ import {MatMenuModule} from '@angular/material/menu';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatIconModule} from '@angular/material/icon';
 
+import {ServiceUnavailableComponent} from "./components/service-unavailable/service-unavailable.component";
+
 import {BtnLoadDirective} from './directives/btn-load.directive';
 import {PreloaderDirective} from './directives/preloader.directive';
+import {UnavailableDirective} from "./directives/unavailable.directive";
 
 @NgModule({
   declarations: [
+    ServiceUnavailableComponent,
+
     BtnLoadDirective,
     PreloaderDirective,
+    UnavailableDirective,
   ],
   imports: [
     FormsModule,
@@ -38,6 +44,7 @@ import {PreloaderDirective} from './directives/preloader.directive';
 
     BtnLoadDirective,
     PreloaderDirective,
+    UnavailableDirective,
   ]
 })
 export class SharedModule{}
