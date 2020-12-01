@@ -31,7 +31,7 @@ export enum RecipesActionTypes{
  */
 export const LoadRecipes = createAction(
   RecipesActionTypes.LoadRecipes,
-  props<{refresh: boolean}>()
+  props<{refresh?: boolean}>()
 );
 
 export const RecipesLoadedSuccess = createAction(
@@ -47,7 +47,7 @@ export const RecipesLoadedError = createAction(RecipesActionTypes.RecipesLoadedE
  */
 export const LoadRecipe = createAction(
   RecipesActionTypes.LoadRecipe,
-  props<{id: number, refresh: boolean}>()
+  props<{id: number, refresh?: boolean}>()
 );
 
 export const RecipeLoadedSuccess = createAction(
@@ -55,7 +55,10 @@ export const RecipeLoadedSuccess = createAction(
   props<{recipe: Recipe}>()
 );
 
-export const RecipeAlreadyLoaded = createAction(RecipesActionTypes.RecipeAlreadyLoaded);
+export const RecipeAlreadyLoaded = createAction(
+  RecipesActionTypes.RecipeAlreadyLoaded,
+  props<{recipe: Recipe}>()
+);
 export const RecipeLoadedError = createAction(RecipesActionTypes.RecipeLoadedError);
 
 /**

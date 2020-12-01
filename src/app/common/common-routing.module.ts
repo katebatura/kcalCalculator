@@ -5,8 +5,14 @@ import {CommonComponent} from './components/common.component';
 import {CalculatorComponent} from './components/routes/calculator/calculator.component';
 
 const routes: Routes = [
-  {path: '', component: CommonComponent, children: [
-    {path: '', component: CalculatorComponent}
+  {
+    path: '',
+    component: CommonComponent,
+    children: [
+      {path: 'recipe', children: [
+        {path: 'create', component: CalculatorComponent},
+        {path: 'edit/:id', component: CalculatorComponent},
+    ]},
   ]}
 ];
 

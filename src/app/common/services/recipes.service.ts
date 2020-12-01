@@ -3,6 +3,7 @@ import {Injectable} from '@angular/core';
 import {Recipe} from "../store/models/recipes.models";
 
 import {Observable, of} from "rxjs";
+import {delay} from "rxjs/operators";
 
 @Injectable({providedIn: 'root'})
 export class RecipesService {
@@ -15,6 +16,7 @@ export class RecipesService {
       {RECIPE_ID: 1, RECIPE_NAME: '1'},
       {RECIPE_ID: 2, RECIPE_NAME: '2'},
       {RECIPE_ID: 3, RECIPE_NAME: '3'},
+      {RECIPE_ID: 10, RECIPE_NAME: '10'}
     ]);
   }
 
@@ -23,8 +25,8 @@ export class RecipesService {
    */
   loadRecipe(id: number): Observable<Recipe> {
     return of(
-    {RECIPE_ID: 1, RECIPE_NAME: '1', CCAL: 125}
-    );
+    {RECIPE_ID: 10, RECIPE_NAME: 'Рецепт10', CCAL: 125}
+    ).pipe(delay(1500));
   }
 
   /**
@@ -33,7 +35,7 @@ export class RecipesService {
   addRecipe(recipe: Recipe): Observable<Recipe> {
     return of(
     {RECIPE_ID: 10, RECIPE_NAME: '10', CCAL: 300}
-    );
+    ).pipe(delay(1500));
   }
 
   /**
@@ -41,15 +43,15 @@ export class RecipesService {
    */
   updateRecipe(recipe: Recipe): Observable<Recipe> {
     return of(
-      {RECIPE_ID: 11, RECIPE_NAME: '11', CCAL: 250}
-    );
+      {RECIPE_ID: 10, RECIPE_NAME: '11', CCAL: 250}
+    ).pipe(delay(1500));
   }
 
   /**
    * Удаление рецепта
    */
   deleteRecipe(id: number) {
-    return of({message: 'ok'});
+    return of({message: 'ok'}).pipe(delay(1500));
   }
 
   constructor() { }

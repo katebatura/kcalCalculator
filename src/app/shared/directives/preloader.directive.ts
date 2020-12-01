@@ -16,7 +16,7 @@ export class PreloaderDirective implements OnChanges{
     this.displayStarting = this.el.nativeElement.style.display;
 
     this.imageElement = document.createElement('img');
-    this.imageElement.setAttribute('src', 'assets/images/loader.svg');
+    this.imageElement.setAttribute('src', 'assets/images/loader-2.svg');
 
     this.preloaderElement = document.createElement('div');
     this.preloaderElement.className = 'loader';

@@ -5,3 +5,8 @@ export enum Pending{
   Error,
   ErrorPending
 }
+
+export enum ComponentModes{
+  Create,
+  Edit
+}

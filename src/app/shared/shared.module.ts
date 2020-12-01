@@ -12,6 +12,8 @@ import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatIconModule} from '@angular/material/icon';
 
 import {ServiceUnavailableComponent} from "./components/service-unavailable/service-unavailable.component";
+import {SaveWidgetComponent} from "./components/save-widget/save-widget.component";
+import {ConfirmDialogComponent} from './components/dialogs/confirm-dialog/confirm-dialog.component';
 
 import {BtnLoadDirective} from './directives/btn-load.directive';
 import {PreloaderDirective} from './directives/preloader.directive';
@@ -20,6 +22,8 @@ import {UnavailableDirective} from "./directives/unavailable.directive";
 @NgModule({
   declarations: [
     ServiceUnavailableComponent,
+    SaveWidgetComponent,
+    ConfirmDialogComponent,
 
     BtnLoadDirective,
     PreloaderDirective,
@@ -29,6 +33,9 @@ import {UnavailableDirective} from "./directives/unavailable.directive";
     FormsModule,
     ReactiveFormsModule,
     PerfectScrollbarModule,
+
+    MatIconModule,
+    MatDialogModule,
   ],
   exports: [
     CommonModule,
@@ -41,6 +48,9 @@ import {UnavailableDirective} from "./directives/unavailable.directive";
     MatMenuModule,
     MatTooltipModule,
     MatIconModule,
+
+    SaveWidgetComponent,
+    ConfirmDialogComponent,
 
     BtnLoadDirective,
     PreloaderDirective,

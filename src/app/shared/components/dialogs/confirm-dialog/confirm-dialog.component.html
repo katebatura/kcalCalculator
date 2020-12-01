@@ -1,0 +1,9 @@
+<div class="card-wrapper">
+  <h4 class="title mb50 align-center" [textContent]="data?.text || 'Вы уверены?'"></h4>
+
+  <div class="fl fl-spb">
+    <button class="red" (click)="dialogRef.close()" [textContent]="data?.cancelButton || 'Нет'"></button>
+    <button class="intense" (click)="dialogRef.close(true)" [textContent]="data?.confirmButton || 'Да'"></button>
+  </div>
+</div>
+

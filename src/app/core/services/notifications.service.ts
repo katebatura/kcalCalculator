@@ -106,7 +106,6 @@ export class NotificationService {
     this.notify.remove(id);
     this.clickSubscription && this.clickSubscription.unsubscribe();
   }
-
 }
 
 
