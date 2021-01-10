@@ -1,31 +1,71 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, EventEmitter, Input, OnChanges, OnDestroy, OnInit, Output, SimpleChanges} from '@angular/core';
 import {FormArray, FormBuilder, FormGroup, Validators} from "@angular/forms";
+import {Store} from "@ngrx/store";
+
+import {CommonState} from "../../../../store";
 
 import {ComponentModes} from "../../../../store/models";
 import {Recipe} from "../../../../store/models/recipes.models";
-import {Store} from "@ngrx/store";
-import {CommonState} from "../../../../store";
+
 import {NotificationService, NotificationType} from "../../../../../core/services/notifications.service";
+import {HelpersService} from "../../../../services/helpers.service";
+
+import {Subscription} from "rxjs";
+
+import * as _lodash from 'lodash';
+const lodash = _lodash;
 
 @Component({
   selector: 'app-recipe-editor',
   templateUrl: './recipe-editor.component.html',
   styleUrls: ['./recipe-editor.component.scss']
 })
-export class RecipeEditorComponent implements OnInit {
+export class RecipeEditorComponent implements OnInit, OnChanges, OnDestroy {
 
   @Input() data?: Recipe;
+  @Input() pending: boolean;
   @Input() mode: number;
+
+  @Output() calculateRecipe: EventEmitter<any> = new EventEmitter<any>();
 
   componentModes = ComponentModes;
 
   form: FormGroup;
   addProductForm: FormGroup;
 
-  constructor(private fb: FormBuilder, private store: Store<CommonState>, private notificationService: NotificationService) { }
+  subscriptions: Subscription[] = [];
+
+  constructor(
+    private fb: FormBuilder,
+    private store: Store<CommonState>,
+    private notificationService: NotificationService,
+    private helpers: HelpersService
+  ) { }
 
   ngOnInit(): void {
     this._createForm();
+  }
+
+  ngOnChanges(changes: SimpleChanges): void {
+    if(this.form && changes.data && !lodash.isEqual(changes.data.currentValue && changes.data.previousValue)){
+      this.form.patchValue(changes.data.currentValue, {emitEvent: false});
+
+      if(this.products.length)
+        this.products.controls.forEach((group, index) => {
+          this.form.get(`PRODUCTS.${index}.PRODUCT_WEIGHT`).setValidators([Validators.required]);
+
+          this.subscriptions.push(
+            this.form.get(`PRODUCTS.${index}.PRODUCT_WEIGHT`).valueChanges.subscribe((value: string) =>
+              this.form.get(`PRODUCTS.${index}`).patchValue({
+                PRODUCT_KCAL: this.helpers.countRatio(+value, +this.form.value.PRODUCTS[index].PRODUCT_DEFAULT_KCAL)
+              }, {emitEvent: false}))
+          );
+        });
+    }
+  }
+
+  ngOnDestroy(): void {
+    this.subscriptions.forEach(sub => sub.unsubscribe());
   }
 
   private _createForm() {
@@ -40,8 +80,9 @@ export class RecipeEditorComponent implements OnInit {
       ADD_PRODUCT_NAME: [null, [Validators.required]],
       ADD_PRODUCT_PROTEINS: [null, [Validators.required]],
       ADD_PRODUCT_FATS: [null, [Validators.required]],
-      ADD_PRODUCT_CARBO: [null, [Validators.required]],
-      ADD_PRODUCT_WEIGHT: [null, [Validators.required]],
+      ADD_PRODUCT_CARBOS: [null, [Validators.required]],
+      ADD_PRODUCT_WEIGHT: [null],
+      ADD_PRODUCT_KCAL: [null, [Validators.required]],
     });
   }
 
@@ -59,9 +100,20 @@ export class RecipeEditorComponent implements OnInit {
       PRODUCT_NAME: this.addProductForm.value.ADD_PRODUCT_NAME,
       PRODUCT_PROTEINS: this.addProductForm.value.ADD_PRODUCT_PROTEINS,
       PRODUCT_FATS: this.addProductForm.value.ADD_PRODUCT_FATS,
-      PRODUCT_CARBO: this.addProductForm.value.ADD_PRODUCT_CARBO,
-      PRODUCT_WEIGHT: this.addProductForm.value.ADD_PRODUCT_WEIGHT,
+      PRODUCT_CARBOS: this.addProductForm.value.ADD_PRODUCT_CARBOS,
+      PRODUCT_WEIGHT: [this.addProductForm.value.ADD_PRODUCT_WEIGHT || 100, [Validators.required]],
+      PRODUCT_DEFAULT_KCAL: this.addProductForm.value.ADD_PRODUCT_KCAL,
+      PRODUCT_KCAL: this.addProductForm.value.ADD_PRODUCT_KCAL,
     }));
+
+    let index = this.products.length - 1;
+
+    this.subscriptions.push(
+      this.form.get(`PRODUCTS.${index}.PRODUCT_WEIGHT`).valueChanges.subscribe((value: string) =>
+        this.form.get(`PRODUCTS.${index}`).patchValue({
+          PRODUCT_KCAL: this.helpers.countRatio(+value, +this.form.value.PRODUCTS[index].PRODUCT_DEFAULT_KCAL)
+        }, {emitEvent: false}))
+    );
 
     this.addProductForm.reset();
   }
@@ -81,6 +133,18 @@ export class RecipeEditorComponent implements OnInit {
 
       return;
     }
+
+    const weight = +this.form.value.DISH_WEIGHT - +this.form.value.TABLEWARE_WEIGHT,
+          totalKCal = this.products.controls.reduce((accumulator, currentValue) => accumulator + +currentValue.value.PRODUCT_KCAL, 0),
+          totalProteins = this.products.controls.reduce((accumulator, currentValue) => accumulator + +currentValue.value.PRODUCT_PROTEINS, 0),
+          totalFats = this.products.controls.reduce((accumulator, currentValue) => accumulator + +currentValue.value.PRODUCT_FATS, 0),
+          totalCarbos = this.products.controls.reduce((accumulator, currentValue) => accumulator + +currentValue.value.PRODUCT_CARBOS, 0),
+          dishKcal = this.helpers.countInverseRatio(weight, totalKCal),
+          dishProteins = this.helpers.countInverseRatio(weight, totalProteins),
+          dishFats = this.helpers.countInverseRatio(weight, totalFats),
+          dishCarbos = this.helpers.countInverseRatio(weight, totalCarbos);
+
+    console.log(dishKcal, dishProteins, dishFats, dishCarbos)
   }
 
 }

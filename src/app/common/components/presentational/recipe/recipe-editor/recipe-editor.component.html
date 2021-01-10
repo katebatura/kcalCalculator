@@ -52,19 +52,23 @@
 
         <div class="col-4">
           <div class="input-wrapper">
-            <input formControlName="ADD_PRODUCT_CARBO" placeholder="У" />
+            <input formControlName="ADD_PRODUCT_CARBOS" placeholder="У" />
           </div>
         </div>
       </div>
     </div>
 
-    <div class="col-2">
+    <!--<div class="col-2">
       <div class="input-wrapper">
         <input formControlName="ADD_PRODUCT_WEIGHT" placeholder="грамм" />
       </div>
-    </div>
+    </div>-->
 
-    <div class="col-1 gray">100ccal</div>
+    <div class="col-2">
+      <div class="input-wrapper">
+        <input formControlName="ADD_PRODUCT_KCAL" placeholder="ккал" />
+      </div>
+    </div>
 
     <div class="col-1">
       <button class="round main-color">
@@ -77,7 +81,7 @@
     <perfect-scrollbar>
       <div class="products-list" formArrayName="PRODUCTS">
         <ng-container *ngFor="let product of products.controls; let i=index">
-          <div class="row" [formGroup]="product">
+          <div class="row fl-a-cr" [formGroup]="product">
             <div class="col-4">
               <div class="photo photo-sm">
                 <div></div>
@@ -97,7 +101,7 @@
                 </div>
 
                 <div class="col-4">
-                  У: {{product.value.PRODUCT_CARBO}}г.
+                  У: {{product.value.PRODUCT_CARBOS}}г.
                 </div>
               </div>
             </div>
@@ -108,7 +112,7 @@
               </div>
             </div>
 
-            <div class="col-1 gray">100ccal</div>
+            <div class="col-1 gray">{{product.value.PRODUCT_KCAL}}</div>
 
             <div class="col-1">
               <mat-icon class="red pointer" (click)="deleteProduct(i)">delete_outline</mat-icon>
@@ -120,6 +124,6 @@
   </form>
 
   <footer>
-    <button (click)="calculate()" [textContent]="'Рассчитать'"></button>
+    <button [btnLoad]="pending" (click)="calculate()" [textContent]="'Рассчитать'"></button>
   </footer>
 </div>

@@ -1,6 +1,7 @@
 <div class="row" [appPreloader]="loadRecipePending$ | async">
   <div class="col-8">
     <app-recipe-editor [mode]="componentMode"
+                       [pending]="false"
                        [data]="recipe$ | async"></app-recipe-editor>
   </div>
 

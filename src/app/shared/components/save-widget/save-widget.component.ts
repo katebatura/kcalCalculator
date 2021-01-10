@@ -38,7 +38,7 @@ export class SaveWidgetComponent implements OnInit, OnChanges{
   }
 
   ngOnChanges(changes: SimpleChanges): void {
-    if(changes.data && !lodash.isEqual(changes.data.currentValue && changes.data.previousValue))
+    if(this.form && changes.data && !lodash.isEqual(changes.data.currentValue && changes.data.previousValue))
       this.form.patchValue(changes.data.currentValue, {emitEvent: false});
   }
 
