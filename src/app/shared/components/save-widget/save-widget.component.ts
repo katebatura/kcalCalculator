@@ -1,4 +1,4 @@
-import {Component, EventEmitter, Input, OnChanges, Output, SimpleChanges} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, OnChanges, Output, SimpleChanges} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {MatDialog} from "@angular/material/dialog";
 
@@ -14,11 +14,11 @@ import * as _lodash from 'lodash';
 const lodash = _lodash;
 
 @Component({
-  selector: 'save-widget',
+  selector: 'app-save-widget',
   templateUrl: './save-widget.component.html',
   styleUrls: ['./save-widget.component.scss']
 })
-export class SaveWidgetComponent implements OnChanges{
+export class SaveWidgetComponent implements OnInit, OnChanges{
 
   @Input() data?: any;
   @Input() pending: boolean;
@@ -31,7 +31,9 @@ export class SaveWidgetComponent implements OnChanges{
 
   form: FormGroup;
 
-  constructor(private fb: FormBuilder, private store: Store<CommonState>, private dialog: MatDialog) {
+  constructor(private fb: FormBuilder, private store: Store<CommonState>, private dialog: MatDialog) {}
+
+  ngOnInit(): void {
     this._createForm();
   }
 
@@ -64,7 +66,7 @@ export class SaveWidgetComponent implements OnChanges{
         cancelButton: 'отмена',
         confirmButton: 'удалить'
       },
-      //disableClose: true,
+      disableClose: true,
       width: '500px'
     }).afterClosed().pipe(
       filter(result => result)

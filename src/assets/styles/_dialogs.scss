@@ -1,3 +1,9 @@
+@import "variables";
+
 .mat-dialog-container {
+  background: $bg-color;
+  border-radius: 35px!important;
+  box-shadow: $outset-shadow;
+  padding: 30px!important;
   position: relative;
 }

@@ -11,9 +11,9 @@ import {CommonRoutingModule} from './common/common-routing.module';
 import {CommonModule} from './common/common.module';
 import {CoreModule} from './core/core.module';
 import {SharedModule} from './shared/shared.module';
+import {AuthModule} from './auth/auth.module';
 
 import {AppComponent} from './app.component';
-import {AuthModule} from './auth/auth.module';
 
 @NgModule({
   declarations: [

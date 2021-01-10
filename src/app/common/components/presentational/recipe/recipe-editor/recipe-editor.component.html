@@ -1,1 +1,125 @@
-<p>recipe-editor works!</p>
+<div class="card-wrapper">
+  <h1 class="mb30">{{mode === componentModes.Edit ? data.RECIPE_NAME : 'Новый рецепт'}}</h1>
+
+  <form class="row mb15" [formGroup]="form" novalidate>
+    <div class="col-4 label-left">
+      <label>Вес посуды</label>
+
+      <div class="input-wrapper">
+        <input formControlName="TABLEWARE_WEIGHT" />
+      </div>
+    </div>
+
+    <div class="col-4">
+      <div class="input-wrapper">
+        <input formControlName="TABLEWARE" />
+      </div>
+    </div>
+
+    <div class="col-4"></div>
+
+    <div class="col-4 label-left">
+      <label>Вес готового блюда</label>
+
+      <div class="input-wrapper">
+        <input formControlName="DISH_WEIGHT" />
+      </div>
+    </div>
+  </form>
+
+  <h2 class="title">Ингредиенты</h2>
+
+  <form class="row mb20" [formGroup]="addProductForm" novalidate>
+    <div class="col-4">
+      <div class="input-wrapper">
+        <input formControlName="ADD_PRODUCT_NAME" />
+      </div>
+    </div>
+
+    <div class="col-4 mb0">
+      <div class="row">
+        <div class="col-4">
+          <div class="input-wrapper">
+            <input formControlName="ADD_PRODUCT_PROTEINS" placeholder="Б" />
+          </div>
+        </div>
+
+        <div class="col-4">
+          <div class="input-wrapper">
+            <input formControlName="ADD_PRODUCT_FATS" placeholder="Ж" />
+          </div>
+        </div>
+
+        <div class="col-4">
+          <div class="input-wrapper">
+            <input formControlName="ADD_PRODUCT_CARBO" placeholder="У" />
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-2">
+      <div class="input-wrapper">
+        <input formControlName="ADD_PRODUCT_WEIGHT" placeholder="грамм" />
+      </div>
+    </div>
+
+    <div class="col-1 gray">100ccal</div>
+
+    <div class="col-1">
+      <button class="round main-color">
+        <mat-icon (click)="addProduct()">add</mat-icon>
+      </button>
+    </div>
+  </form>
+
+  <form [formGroup]="form" novalidate>
+    <perfect-scrollbar>
+      <div class="products-list" formArrayName="PRODUCTS">
+        <ng-container *ngFor="let product of products.controls; let i=index">
+          <div class="row" [formGroup]="product">
+            <div class="col-4">
+              <div class="photo photo-sm">
+                <div></div>
+              </div>
+
+              {{product.value.PRODUCT_NAME}}
+            </div>
+
+            <div class="col-4 mb0">
+              <div class="row">
+                <div class="col-4">
+                  Б: {{product.value.PRODUCT_PROTEINS}}г.
+                </div>
+
+                <div class="col-4">
+                  Ж: {{product.value.PRODUCT_FATS}}г.
+                </div>
+
+                <div class="col-4">
+                  У: {{product.value.PRODUCT_CARBO}}г.
+                </div>
+              </div>
+            </div>
+
+            <div class="col-2">
+              <div class="input-wrapper">
+                <input formControlName="PRODUCT_WEIGHT" placeholder="грамм" />
+              </div>
+            </div>
+
+            <div class="col-1 gray">100ccal</div>
+
+            <div class="col-1">
+              <mat-icon class="red pointer" (click)="deleteProduct(i)">delete_outline</mat-icon>
+            </div>
+          </div>
+        </ng-container>
+      </div>
+    </perfect-scrollbar>
+  </form>
+
+  <footer>
+    <button (click)="calculate()" [textContent]="'Рассчитать'"></button>
+  </footer>
+</div>

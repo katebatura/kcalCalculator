@@ -12,13 +12,16 @@ import {CommonComponent} from './components/common.component';
 
 import {CalculatorComponent} from './components/routes/calculator/calculator.component';
 
-import {RecipeEditorComponent} from './components/presentational/recipe/recipe-editor/recipe-editor.component';
+import {RecipeNutritionalValueComponent} from './components/presentational/recipe/recipe-nutritional-value/recipe-nutritional-value.component';
+import { RecipeEditorComponent } from './components/presentational/recipe/recipe-editor/recipe-editor.component';
 
 @NgModule({
   declarations: [
     CommonComponent,
 
     CalculatorComponent,
+
+    RecipeNutritionalValueComponent,
 
     RecipeEditorComponent,
   ],

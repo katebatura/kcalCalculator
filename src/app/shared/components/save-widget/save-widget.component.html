@@ -2,7 +2,7 @@
   <h2 class="title">{{mode === componentModes.Edit ? 'Изменить рецепт' : 'Сохранить рецепт'}}</h2>
 
   <button *ngIf="mode === componentModes.Edit" class="round red card-pos-t-r" (click)="delete()">
-    <mat-icon>delete</mat-icon>
+    <mat-icon>delete_outline</mat-icon>
   </button>
 
   <form class="row mb20" [formGroup]="form" novalidate>

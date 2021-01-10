@@ -1,7 +1,16 @@
-<div class="col-4" [appPreloader]="loadRecipePending$ | async">
-  <save-widget [mode]="componentMode"
-               [pending]="componentMode === componentModes.Create ? (addRecipePending$ | async) : (updateRecipePending$ | async)"
-               [data]="recipe$ | async"
-               (saveItem)="saveRecipe($event)"
-               (deleteItem)="deleteRecipe()"></save-widget>
+<div class="row" [appPreloader]="loadRecipePending$ | async">
+  <div class="col-8">
+    <app-recipe-editor [mode]="componentMode"
+                       [data]="recipe$ | async"></app-recipe-editor>
+  </div>
+
+  <div class="col-4">
+    <app-recipe-nutritional-value></app-recipe-nutritional-value>
+
+    <app-save-widget [mode]="componentMode"
+                     [pending]="(componentMode === componentModes.Create ? addRecipePending$ : updateRecipePending$) | async"
+                     [data]="recipe$ | async"
+                     (saveItem)="saveRecipe($event)"
+                     (deleteItem)="deleteRecipe()"></app-save-widget>
+  </div>
 </div>

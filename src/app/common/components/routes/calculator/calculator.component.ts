@@ -1,4 +1,4 @@
-import {Component, OnDestroy} from '@angular/core';
+import {Component, OnInit, OnDestroy} from '@angular/core';
 import {select, Store} from "@ngrx/store";
 import {Actions, ofType} from "@ngrx/effects";
 import {ActivatedRoute} from "@angular/router";
@@ -29,7 +29,7 @@ import {Observable, Subscription} from "rxjs";
   templateUrl: './calculator.component.html',
   styleUrls: ['./calculator.component.scss']
 })
-export class CalculatorComponent implements OnDestroy{
+export class CalculatorComponent implements OnInit, OnDestroy{
 
   recipe$: Observable<Recipe>;
   addRecipePending$: Observable<boolean> = this.store.pipe(select(selectAddRecipePending));
@@ -49,8 +49,10 @@ export class CalculatorComponent implements OnDestroy{
     private fb: FormBuilder,
     private actions$: Actions,
     private store: Store<CommonState>
-  ) {
-    this.componentMode = route.snapshot.params.id ? ComponentModes.Edit : ComponentModes.Create;
+  ) {}
+
+  ngOnInit(): void {
+    this.componentMode = this.route.snapshot.params.id ? ComponentModes.Edit : ComponentModes.Create;
 
     this._createForm();
 
@@ -62,8 +64,8 @@ export class CalculatorComponent implements OnDestroy{
     this.store.dispatch(LoadRecipes({refresh: false}));
 
     if(this.componentMode === ComponentModes.Edit){
-      this.recipe$ = this.store.pipe(select(selectRecipe, route.snapshot.params.id));
-      this.store.dispatch(LoadRecipe({id: route.snapshot.params.id}));
+      this.recipe$ = this.store.pipe(select(selectRecipe, this.route.snapshot.params.id));
+      this.store.dispatch(LoadRecipe({id: this.route.snapshot.params.id}));
     }
   }
 

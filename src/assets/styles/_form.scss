@@ -9,11 +9,21 @@ form{
     color: $gray;
   }
 
+  .label-left{
+    align-items: center;
+    display: flex;
+
+    label{
+      margin-right: 15px;
+      width: 200px!important;
+    }
+  }
+
   .input-wrapper{
     background-color: $bg-color;
     border-radius: 18px;
     box-shadow: $outset-shadow;
-    min-width: 104px!important;
+    min-width: 64px!important;
     padding: 2px;
     position: relative;
 
@@ -26,9 +36,9 @@ form{
       display: block;
       font-family: 'Open Sans', sans-serif;
       height: 38px;
-      min-width: 100px!important;
+      min-width: 60px!important;
       outline: none;
-      padding: 0 35px 0 15px;
+      padding: 0 10px 0 10px;
       width: 100%;
 
       &:focus{
@@ -54,6 +64,10 @@ form{
       top:10px;
       right: 5px;
     }
+  }
+
+  [class*=" col-"], [class^="col-"]{
+    margin-bottom: 15px;
   }
 }
 

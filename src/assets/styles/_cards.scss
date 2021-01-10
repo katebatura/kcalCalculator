@@ -65,6 +65,26 @@
         width: 60px;
       }
     }
+
+    &-sm{
+      height: 40px;
+      width: 40px;
+
+      img {
+        height: 36px;
+        width: 36px;
+      }
+
+      div{
+        height: 36px;
+        width: 36px;
+
+        &:before{
+          height: 30px;
+          width: 30px;
+        }
+      }
+    }
   }
 
   .card-pos-t-r{
