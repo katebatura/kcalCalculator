@@ -1,8 +1,9 @@
 <div class="row" [appPreloader]="loadRecipePending$ | async">
   <div class="col-8">
     <app-recipe-editor [mode]="componentMode"
-                       [pending]="false"
-                       [data]="recipe$ | async"></app-recipe-editor>
+                       [pending]="calculatePending"
+                       [data]="form.value"
+                       (calculateRecipe)="calculateRecipe($event)"></app-recipe-editor>
   </div>
 
   <div class="col-4">
@@ -10,7 +11,7 @@
 
     <app-save-widget [mode]="componentMode"
                      [pending]="(componentMode === componentModes.Create ? addRecipePending$ : updateRecipePending$) | async"
-                     [data]="recipe$ | async"
+                     [data]="form.value"
                      (saveItem)="saveRecipe($event)"
                      (deleteItem)="deleteRecipe()"></app-save-widget>
   </div>

@@ -77,7 +77,7 @@ export class RecipesEffects {
           select(selectRecipe, action.id),
           take(1),
           mergeMap((recipe: Recipe) => {
-            if(recipe?.CCAL)
+            if(recipe?.RECIPE_CCAL)
               return of(RecipeAlreadyLoaded({recipe}));
             else return recipeInfo;
           })

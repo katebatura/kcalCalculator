@@ -134,17 +134,7 @@ export class RecipeEditorComponent implements OnInit, OnChanges, OnDestroy {
       return;
     }
 
-    const weight = +this.form.value.DISH_WEIGHT - +this.form.value.TABLEWARE_WEIGHT,
-          totalKCal = this.products.controls.reduce((accumulator, currentValue) => accumulator + +currentValue.value.PRODUCT_KCAL, 0),
-          totalProteins = this.products.controls.reduce((accumulator, currentValue) => accumulator + +currentValue.value.PRODUCT_PROTEINS, 0),
-          totalFats = this.products.controls.reduce((accumulator, currentValue) => accumulator + +currentValue.value.PRODUCT_FATS, 0),
-          totalCarbos = this.products.controls.reduce((accumulator, currentValue) => accumulator + +currentValue.value.PRODUCT_CARBOS, 0),
-          dishKcal = this.helpers.countInverseRatio(weight, totalKCal),
-          dishProteins = this.helpers.countInverseRatio(weight, totalProteins),
-          dishFats = this.helpers.countInverseRatio(weight, totalFats),
-          dishCarbos = this.helpers.countInverseRatio(weight, totalCarbos);
-
-    console.log(dishKcal, dishProteins, dishFats, dishCarbos)
+    this.calculateRecipe.emit({...this.form.value});
   }
 
 }
