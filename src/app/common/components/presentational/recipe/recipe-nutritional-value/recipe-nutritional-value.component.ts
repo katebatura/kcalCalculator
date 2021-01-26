@@ -43,12 +43,27 @@ export class RecipeNutritionalValueComponent implements OnInit, OnChanges, OnDes
   }
 
   ngOnChanges(changes: SimpleChanges): void {
-    if(this.data && this.data.RECIPE_CCAL && this.carbos)
-      this.carbos.nativeElement.style.backgroundImage = 'linear-gradient(180deg, transparent 50%, #f5f5f5 50%), linear-gradient(90deg, #f5f5f5 50%, transparent 50%)';
+    if(this.data && this.data.RECIPE_CCAL && this.carbos) {
+      this.proteins.nativeElement.style.backgroundImage = this._createGradient(this.data.RECIPE_PROTEINS);
+      this.carbos.nativeElement.style.backgroundImage = this._createGradient(this.data.RECIPE_CARBOS);
+      this.fats.nativeElement.style.backgroundImage = this._createGradient(this.data.RECIPE_FATS);
+    }
   }
 
   ngOnDestroy(): void {
     this.subscription.forEach(sub => sub.unsubscribe());
+  }
+
+  private _createGradient(percent){
+    console.log(percent)
+    if(percent < 50)
+      return `linear-gradient(126deg, transparent 50%, $bg-color 50%), linear-gradient(90deg, $bg-color 50%, transparent 50%)`;
+
+    if(percent == 50)
+      return `linear-gradient(90deg, $bg-color 50%, transparent 50%)`;
+
+    if(percent > 50)
+      return `linear-gradient(180deg, transparent 50%, $main 50%), linear-gradient(90deg, $bg-color 50%, transparent 50%)`;
   }
 
   private _createForm() {
