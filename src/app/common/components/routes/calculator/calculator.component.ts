@@ -116,7 +116,7 @@ export class CalculatorComponent implements OnInit, OnDestroy{
       }
     )));
 
-    const weight = +recipe.DISH_WEIGHT - +recipe.TABLEWARE_WEIGHT,
+    const weight = !recipe.BY_PRODUCTS_WEIGHT ? (+recipe.DISH_WEIGHT - +recipe.TABLEWARE_WEIGHT) : this.products.controls.reduce((accumulator, currentValue) => accumulator + +currentValue.value.PRODUCT_WEIGHT, 0),
       totalKCal = this.products.controls.reduce((accumulator, currentValue) => accumulator + +currentValue.value.PRODUCT_KCAL, 0),
       totalProteins = this.products.controls.reduce((accumulator, currentValue) => accumulator + +currentValue.value.PRODUCT_PROTEINS, 0),
       totalFats = this.products.controls.reduce((accumulator, currentValue) => accumulator + +currentValue.value.PRODUCT_FATS, 0),

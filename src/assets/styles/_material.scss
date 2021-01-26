@@ -1,0 +1,19 @@
+@import "variables";
+
+.mat-slide-toggle {
+  .mat-slide-toggle-thumb{
+    background-color: $bg-color;
+    box-shadow: $outset-shadow;
+  }
+
+  &.mat-checked{
+    .mat-slide-toggle-thumb{
+      background-color: $bg-color;
+      box-shadow: $outset-shadow;
+    }
+
+    .mat-slide-toggle-bar{
+      background-color: $main;
+    }
+  }
+}

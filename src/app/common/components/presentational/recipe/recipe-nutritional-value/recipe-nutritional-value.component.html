@@ -1,7 +1,53 @@
 <div class="card-wrapper mb30">
-  <form class="row">
-    <div class="input-wrapper col-4">
-      <input placeholder="грамм" />
+  <form *ngIf="data.RECIPE_CCAL; else noData" class="row" [formGroup]="form" novalidate>
+    <div class="col-4 fl fl-col fl-a-cr">
+      <div #proteins class="main-circle proteins">
+        <div class="circle">
+          {{data.RECIPE_PROTEINS}}
+          <span class="b-300 f-s-12">грамм</span>
+        </div>
+      </div>
+
+      <div class="gray mb25">Белки  на 100 г</div>
+    </div>
+
+    <div class="col-4 fl fl-col fl-a-cr">
+      <div #carbos class="main-circle carbos">
+        <div class="circle">
+          {{data.RECIPE_CARBOS}}
+          <span class="b-300 f-s-12">грамм</span>
+        </div>
+      </div>
+
+      <div class="gray mb25">Углеводы  на 100 г</div>
+    </div>
+
+    <div class="col-4 fl fl-col fl-a-cr">
+      <div #fats class="main-circle fats">
+        <div class="circle">
+          {{data.RECIPE_FATS}}
+          <span class="b-300 f-s-12">грамм</span>
+        </div>
+      </div>
+
+      <div class="gray mb25">Жиры  на 100 г</div>
+    </div>
+
+    <div class="input-wrapper col-2">
+      <input placeholder="грамм" formControlName="WEIGHT" />
+    </div>
+
+    <div class="col-2 gray">{{countedKcal}} ккал</div>
+
+    <div class="col-4"></div>
+
+    <div class="col-4">
+      <div class="f-s-24 b-600 lh30 main-color mb10">{{data.RECIPE_CCAL}} ккал</div>
+      <div class="gray ml5">на 100 грамм</div>
     </div>
   </form>
+
+  <ng-template #noData>
+    <h2 class="title fl fl-cr mb100 mt100">Рассчитайте рецепт</h2>
+  </ng-template>
 </div>

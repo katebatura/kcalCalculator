@@ -44,6 +44,21 @@ export class RecipeEditorComponent implements OnInit, OnChanges, OnDestroy {
 
   ngOnInit(): void {
     this._createForm();
+
+    this.subscriptions.push(
+      this.form.get('BY_PRODUCTS_WEIGHT').valueChanges.subscribe((value: boolean) => {
+        if(value) {
+          this.form.get('TABLEWARE_WEIGHT').clearValidators();
+          this.form.get('DISH_WEIGHT').clearValidators();
+        } else {
+          this.form.get('TABLEWARE_WEIGHT').setValidators([Validators.required]);
+          this.form.get('DISH_WEIGHT').setValidators([Validators.required]);
+        }
+
+        this.form.get('TABLEWARE_WEIGHT').updateValueAndValidity();
+        this.form.get('DISH_WEIGHT').updateValueAndValidity();
+      })
+    );
   }
 
   ngOnChanges(changes: SimpleChanges): void {
@@ -73,7 +88,8 @@ export class RecipeEditorComponent implements OnInit, OnChanges, OnDestroy {
       TABLEWARE_WEIGHT: [null, [Validators.required]],
       TABLEWARE: [null],
       DISH_WEIGHT: [null, [Validators.required]],
-      PRODUCTS: this.fb.array([])
+      PRODUCTS: this.fb.array([]),
+      BY_PRODUCTS_WEIGHT: false,
     });
 
     this.addProductForm = this.fb.group({

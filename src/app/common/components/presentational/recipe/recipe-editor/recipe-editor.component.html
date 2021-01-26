@@ -2,8 +2,8 @@
   <h1 class="mb30">{{mode === componentModes.Edit ? data.RECIPE_NAME : 'Новый рецепт'}}</h1>
 
   <form class="row mb15" [formGroup]="form" novalidate>
-    <div class="col-4 label-left">
-      <label>Вес посуды</label>
+    <div class="col-4 fl fl-a-cr">
+      <label class="label-left">Вес посуды</label>
 
       <div class="input-wrapper">
         <input formControlName="TABLEWARE_WEIGHT" />
@@ -18,12 +18,18 @@
 
     <div class="col-4"></div>
 
-    <div class="col-4 label-left">
-      <label>Вес готового блюда</label>
+    <div class="col-4 fl fl-a-cr">
+      <label class="label-left">Вес готового блюда</label>
 
       <div class="input-wrapper">
         <input formControlName="DISH_WEIGHT" />
       </div>
+    </div>
+
+    <div class="col-4 fl fl-a-cr fl-spb">
+      <mat-slide-toggle formControlName="BY_PRODUCTS_WEIGHT"></mat-slide-toggle>
+
+      <label class="label-right">По весу ингредиентов</label>
     </div>
   </form>
 

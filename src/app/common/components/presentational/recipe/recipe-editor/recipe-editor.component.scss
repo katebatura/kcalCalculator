@@ -4,5 +4,6 @@
 
 .products-list{
   padding: 0 15px;
-  max-height: 100px;
+  height: calc(100vh - 488px);
+  margin-bottom: 20px;
 }

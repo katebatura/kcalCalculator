@@ -7,7 +7,7 @@
   </div>
 
   <div class="col-4">
-    <app-recipe-nutritional-value></app-recipe-nutritional-value>
+    <app-recipe-nutritional-value [data]="form.value"></app-recipe-nutritional-value>
 
     <app-save-widget [mode]="componentMode"
                      [pending]="(componentMode === componentModes.Create ? addRecipePending$ : updateRecipePending$) | async"

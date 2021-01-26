@@ -10,6 +10,7 @@ import {MatDialogModule} from "@angular/material/dialog";
 import {MatMenuModule} from '@angular/material/menu';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatIconModule} from '@angular/material/icon';
+import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 
 import {ServiceUnavailableComponent} from "./components/service-unavailable/service-unavailable.component";
 import {SaveWidgetComponent} from "./components/save-widget/save-widget.component";
@@ -48,6 +49,7 @@ import {UnavailableDirective} from "./directives/unavailable.directive";
     MatMenuModule,
     MatTooltipModule,
     MatIconModule,
+    MatSlideToggleModule,
 
     SaveWidgetComponent,
     ConfirmDialogComponent,
