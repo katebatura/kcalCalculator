@@ -7,6 +7,12 @@ import {Recipe} from '../../../../store/models/recipes.models';
 
 import {Subscription} from 'rxjs';
 
+export enum circleColors{
+  Proteins = '#00663c',
+  Carbos = '#ffb20f',
+  Fats = '#dd0000',
+}
+
 @Component({
   selector: 'app-recipe-nutritional-value',
   templateUrl: './recipe-nutritional-value.component.html',
@@ -43,10 +49,10 @@ export class RecipeNutritionalValueComponent implements OnInit, OnChanges, OnDes
   }
 
   ngOnChanges(changes: SimpleChanges): void {
-    if(this.data && this.data.RECIPE_CCAL && this.carbos) {
-      this.proteins.nativeElement.style.backgroundImage = this._createGradient(this.data.RECIPE_PROTEINS);
-      this.carbos.nativeElement.style.backgroundImage = this._createGradient(this.data.RECIPE_CARBOS);
-      this.fats.nativeElement.style.backgroundImage = this._createGradient(this.data.RECIPE_FATS);
+    if(this.data && this.data.RECIPE_CCAL && this.carbos && this.proteins && this.fats) {
+      this.proteins.nativeElement.style.backgroundImage = this._createGradient(this.helpers.countPercents(+this.data.RECIPE_PROTEINS, +this.data.RECIPE_CCAL), circleColors.Proteins);
+      this.carbos.nativeElement.style.backgroundImage = this._createGradient(this.helpers.countPercents(+this.data.RECIPE_CARBOS, +this.data.RECIPE_CCAL), circleColors.Carbos);
+      this.fats.nativeElement.style.backgroundImage = this._createGradient(this.helpers.countPercents(+this.data.RECIPE_FATS, +this.data.RECIPE_CCAL), circleColors.Fats);
     }
   }
 
@@ -54,16 +60,18 @@ export class RecipeNutritionalValueComponent implements OnInit, OnChanges, OnDes
     this.subscription.forEach(sub => sub.unsubscribe());
   }
 
-  private _createGradient(percent){
-    console.log(percent)
+  private _createGradient(percent, color){
     if(percent < 50)
-      return `linear-gradient(126deg, transparent 50%, $bg-color 50%), linear-gradient(90deg, $bg-color 50%, transparent 50%)`;
+      return `linear-gradient(${90 + this.helpers.countDegree(percent, 269 - 90)}deg, transparent 50%, #f5f5f5 50%), linear-gradient(90deg, #f5f5f5 50%, transparent 50%)`;
 
     if(percent == 50)
-      return `linear-gradient(90deg, $bg-color 50%, transparent 50%)`;
+      return `linear-gradient(90deg, #f5f5f5 50%, transparent 50%)`;
 
     if(percent > 50)
-      return `linear-gradient(180deg, transparent 50%, $main 50%), linear-gradient(90deg, $bg-color 50%, transparent 50%)`;
+      return `linear-gradient(${90 + this.helpers.countDegree((percent - 50), 269 - 90)}deg, transparent 50%, ${color} 50%), linear-gradient(90deg, #f5f5f5 50%, transparent 50%)`;
+
+    if(percent == 100)
+      return 'none';
   }
 
   private _createForm() {

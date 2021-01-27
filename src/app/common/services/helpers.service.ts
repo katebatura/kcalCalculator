@@ -14,4 +14,12 @@ export class HelpersService {
   countInverseRatio(weight: number, totalValue: number) {
     return +(100 * totalValue / weight).toFixed(2);
   }
+
+  countPercents(weight: number, totalValue: number) {
+    return Math.round(weight * 100 / totalValue);
+  }
+
+  countDegree(percent, deg) {
+    return Math.round(percent * deg / 49)
+  }
 }
