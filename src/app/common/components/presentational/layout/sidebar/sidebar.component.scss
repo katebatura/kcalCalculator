@@ -1,16 +1,18 @@
 @import "variables";
 
 .sidebar-container{
-  background-color: $main;
+  background: $main-gradient;
   border-radius: 35px;
+  box-shadow: $menu-outset-shadow;
   height: calc(100vh - 60px);
   margin-right: 30px;
   padding: 7px;
   width: 250px;
 
   .sidebar{
-    background-color: $second-color;
+    background: $main-gradient;
     border-radius: 30px;
+    box-shadow: $menu-inset-shadow;
     height: 100%;
     padding: 30px;
     width: 100%;

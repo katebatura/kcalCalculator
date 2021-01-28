@@ -23,7 +23,7 @@ button{
   }
 
   &.intense{
-    background-color: $main;
+    background: $main-gradient;
     color: $bg-color;
   }
 
@@ -44,6 +44,13 @@ button{
         width: 20px;
       }
     }
+  }
+
+  &.menu{
+    box-shadow: $outset-shadow-sm-buttons-intense;
+    height: 40px;
+    padding: 8px;
+    width: 40px;
   }
 
   .button-loader{

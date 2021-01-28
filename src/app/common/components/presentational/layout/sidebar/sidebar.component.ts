@@ -12,6 +12,11 @@ export class SidebarComponent implements OnInit {
       LABEL: 'Калькулятор',
       URL: 'recipe/create',
       ICON: 'add'
+    },
+    {
+      LABEL: 'Редактор',
+      URL: 'recipe/edit/10',
+      ICON: 'add'
     }
   ];
 

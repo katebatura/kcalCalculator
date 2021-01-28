@@ -3,7 +3,10 @@
     <h1 class="title">KCalc</h1>
 
     <a class="menu-item" *ngFor="let item of menu" routerLinkActive="active" [routerLink]="item.URL">
-      <mat-icon class="mr10">{{item.ICON}}</mat-icon>
+      <button class="round menu intense mr20">
+        <mat-icon class="mr10">{{item.ICON}}</mat-icon>
+      </button>
+
       {{item.LABEL}}
     </a>
   </div>
