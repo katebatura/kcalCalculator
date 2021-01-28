@@ -9,7 +9,9 @@ const routes: Routes = [
     path: '',
     component: CommonComponent,
     children: [
+      {path: '', redirectTo: 'recipe', pathMatch: 'full'},
       {path: 'recipe', children: [
+        {path: '', redirectTo: 'create', pathMatch: 'full'},
         {path: 'create', component: CalculatorComponent},
         {path: 'edit/:id', component: CalculatorComponent},
     ]},

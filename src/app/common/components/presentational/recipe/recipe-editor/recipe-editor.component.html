@@ -83,7 +83,7 @@
     </div>
   </form>
 
-  <form [formGroup]="form" novalidate>
+  <form class="row" [formGroup]="form" novalidate>
     <perfect-scrollbar>
       <div class="products-list" formArrayName="PRODUCTS">
         <ng-container *ngFor="let product of products.controls; let i=index">
@@ -98,15 +98,15 @@
 
             <div class="col-4 mb0">
               <div class="row">
-                <div class="col-4">
+                <div class="col-4 pl25">
                   Б: {{product.value.PRODUCT_PROTEINS}}г.
                 </div>
 
-                <div class="col-4">
+                <div class="col-4 pl25">
                   Ж: {{product.value.PRODUCT_FATS}}г.
                 </div>
 
-                <div class="col-4">
+                <div class="col-4 pl25">
                   У: {{product.value.PRODUCT_CARBOS}}г.
                 </div>
               </div>
@@ -118,7 +118,7 @@
               </div>
             </div>
 
-            <div class="col-1 gray">{{product.value.PRODUCT_KCAL}}</div>
+            <div class="col-1 gray pl25">{{product.value.PRODUCT_KCAL}}</div>
 
             <div class="col-1">
               <mat-icon class="red pointer" (click)="deleteProduct(i)">delete_outline</mat-icon>

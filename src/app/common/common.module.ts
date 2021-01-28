@@ -13,7 +13,8 @@ import {CommonComponent} from './components/common.component';
 import {CalculatorComponent} from './components/routes/calculator/calculator.component';
 
 import {RecipeNutritionalValueComponent} from './components/presentational/recipe/recipe-nutritional-value/recipe-nutritional-value.component';
-import { RecipeEditorComponent } from './components/presentational/recipe/recipe-editor/recipe-editor.component';
+import {RecipeEditorComponent} from './components/presentational/recipe/recipe-editor/recipe-editor.component';
+import {SidebarComponent} from './components/presentational/layout/sidebar/sidebar.component';
 
 @NgModule({
   declarations: [
@@ -22,8 +23,9 @@ import { RecipeEditorComponent } from './components/presentational/recipe/recipe
     CalculatorComponent,
 
     RecipeNutritionalValueComponent,
-
     RecipeEditorComponent,
+
+    SidebarComponent,
   ],
   imports: [
     CommonRoutingModule,
