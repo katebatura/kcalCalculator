@@ -1,25 +1,59 @@
 import {ActionReducerMap, createFeatureSelector, createSelector} from '@ngrx/store';
 
+import * as common from './reducers/common.reducers';
 import * as recipes from './reducers/recipes.reducers';
 
-import {Pending} from "./models";
-import {Recipe} from "./models/recipes.models";
-import {UnavailableData} from "../../shared/directives/unavailable.directive";
+import {Pending} from './models';
+import {Recipe} from './models/recipes.models';
+import {UnavailableData} from '../../shared/directives/unavailable.directive';
+import {Menu} from './models/common.models';
 
-export interface CommonState{
+export interface CommonAppState{
+  common: common.State,
   recipes: recipes.State,
 }
 
-export const reducers: ActionReducerMap<CommonState> = {
+export const reducers: ActionReducerMap<CommonAppState> = {
+  common: common.reducer,
   recipes: recipes.reducer,
 };
 
-export const selectCommonState = createFeatureSelector<CommonState>('common');
+export const selectCommonAppState = createFeatureSelector<CommonAppState>('commonApp');
+
+/*-------------------------------------------------COMMON-------------------------------------------------*/
+export const selectCommonState = createSelector(
+  selectCommonAppState,
+  (state: CommonAppState) => state.common
+);
+
+export const selectMenu = createSelector(
+  selectCommonState,
+  (state: common.State): Menu[] => state.menu
+);
+
+export const selectMenuPending = createSelector(
+  selectCommonState,
+  (state: common.State): boolean => state.pending.menu === Pending.Active
+);
+
+export const selectAppPending = createSelector(
+  selectMenuPending,
+  (menu: boolean): boolean => menu
+);
+
+export const selectAppError = createSelector(
+  selectCommonState,
+  (state: common.State): UnavailableData => ({
+    unavailable: [Pending.Error, Pending.ErrorPending].includes(state.pending.menu),
+    pending: state.pending.menu === Pending.ErrorPending
+  })
+);
+
 
 /*-------------------------------------------------RECIPES-------------------------------------------------*/
 export const selectRecipesState = createSelector(
-  selectCommonState,
-  (state: CommonState) => state.recipes
+  selectCommonAppState,
+  (state: CommonAppState) => state.recipes
 );
 
 export const selectRecipes = createSelector(
@@ -73,7 +107,7 @@ export const selectUpdateRecipePending = createSelector(
   (state: recipes.State): boolean => state.pending.updateRecipe === Pending.Active
 );
 
-export const selectdeleteRecipePending = createSelector(
+export const selectDeleteRecipePending = createSelector(
   selectRecipesEntities,
   (recipes: any, id: number): boolean => recipes[id].PENDING.DELETE === Pending.Active
 );

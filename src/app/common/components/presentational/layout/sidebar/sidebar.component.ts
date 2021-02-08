@@ -1,28 +1,15 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Input} from '@angular/core';
+
+import {Menu} from '../../../../store/models/common.models';
 
 @Component({
   selector: 'app-sidebar',
   templateUrl: './sidebar.component.html',
   styleUrls: ['./sidebar.component.scss']
 })
-export class SidebarComponent implements OnInit {
-
-  menu: any[] = [
-    {
-      LABEL: 'Калькулятор',
-      URL: 'recipe/create',
-      ICON: 'add'
-    },
-    {
-      LABEL: 'Редактор',
-      URL: 'recipe/edit/10',
-      ICON: 'add'
-    }
-  ];
+export class SidebarComponent {
+  @Input() menu: Menu[];
 
   constructor() { }
-
-  ngOnInit(): void {
-  }
 
 }

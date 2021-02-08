@@ -1,8 +1,9 @@
 import {Injectable} from "@angular/core";
+import {Router} from "@angular/router";
 import {Actions, createEffect, ofType} from "@ngrx/effects";
 import {select, Store} from "@ngrx/store";
 
-import {CommonState, selectRecipe, selectRecipes} from "../index";
+import {CommonAppState, selectRecipe, selectRecipes} from "../index";
 
 import {
   RecipeAddedError,
@@ -27,7 +28,6 @@ import {DEFAULT_RECIPE_PENDING, Recipe} from "../models/recipes.models";
 
 import {catchError, map, mergeMap, take, tap} from "rxjs/operators";
 import {of} from "rxjs";
-import {Router} from "@angular/router";
 
 @Injectable({providedIn: 'root'})
 export class RecipesEffects {
@@ -137,7 +137,7 @@ export class RecipesEffects {
 
   constructor(
     private actions$: Actions,
-    private store: Store<CommonState>,
+    private store: Store<CommonAppState>,
     private router: Router,
     private notificationService: NotificationService,
     private recipesService: RecipesService

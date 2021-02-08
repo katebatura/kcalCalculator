@@ -4,7 +4,7 @@ import {MatDialog} from "@angular/material/dialog";
 
 import {ComponentModes} from "../../../common/store/models";
 import {Store} from "@ngrx/store";
-import {CommonState} from "../../../common/store";
+import {CommonAppState} from "../../../common/store";
 
 import {ConfirmDialogComponent} from "../dialogs/confirm-dialog/confirm-dialog.component";
 
@@ -31,7 +31,7 @@ export class SaveWidgetComponent implements OnInit, OnChanges{
 
   form: FormGroup;
 
-  constructor(private fb: FormBuilder, private store: Store<CommonState>, private dialog: MatDialog) {}
+  constructor(private fb: FormBuilder, private store: Store<CommonAppState>, private dialog: MatDialog) {}
 
   ngOnInit(): void {
     this._createForm();

@@ -5,7 +5,7 @@ import {ActivatedRoute} from "@angular/router";
 import {FormArray, FormBuilder, FormGroup, Validators} from '@angular/forms';
 
 import {
-  CommonState,
+  CommonAppState,
   selectAddRecipePending,
   selectLoadRecipePending,
   selectUpdateRecipePending
@@ -50,7 +50,7 @@ export class CalculatorComponent implements OnInit, OnDestroy{
     private route: ActivatedRoute,
     private fb: FormBuilder,
     private actions$: Actions,
-    private store: Store<CommonState>,
+    private store: Store<CommonAppState>,
     private helpers: HelpersService
   ) {}
 

@@ -6,6 +6,7 @@ import {CommonRoutingModule} from './common-routing.module';
 import {SharedModule} from '../shared/shared.module';
 
 import {reducers} from "./store";
+import {CommonEffects} from './store/effects/common.effects';
 import {RecipesEffects} from "./store/effects/recipes.effects";
 
 import {CommonComponent} from './components/common.component';
@@ -33,9 +34,10 @@ import {SidebarComponent} from './components/presentational/layout/sidebar/sideb
     SharedModule,
 
     EffectsModule.forFeature([
+      CommonEffects,
       RecipesEffects
     ]),
-    StoreModule.forFeature('common', reducers),
+    StoreModule.forFeature('commonApp', reducers),
   ],
   exports: [],
   providers: []

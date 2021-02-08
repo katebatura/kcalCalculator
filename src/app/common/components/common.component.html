@@ -1,5 +1,5 @@
 <div class="fl">
-  <app-sidebar></app-sidebar>
+  <app-sidebar [menu]="$menu | async"></app-sidebar>
 
   <router-outlet></router-outlet>
 </div>

@@ -2,7 +2,7 @@ import {Component, EventEmitter, Input, OnChanges, OnDestroy, OnInit, Output, Si
 import {FormArray, FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {Store} from "@ngrx/store";
 
-import {CommonState} from "../../../../store";
+import {CommonAppState} from "../../../../store";
 
 import {ComponentModes} from "../../../../store/models";
 import {Recipe} from "../../../../store/models/recipes.models";
@@ -37,7 +37,7 @@ export class RecipeEditorComponent implements OnInit, OnChanges, OnDestroy {
 
   constructor(
     private fb: FormBuilder,
-    private store: Store<CommonState>,
+    private store: Store<CommonAppState>,
     private notificationService: NotificationService,
     private helpers: HelpersService
   ) { }
