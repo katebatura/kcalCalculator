@@ -1,0 +1,29 @@
+<div>
+  <div class="card-wrapper service-unavailable" [ngClass]="{hidden: pending, small: smallSize}">
+    <ng-container *ngIf="!smallSize; else small">
+      <img src="assets/images/service-unavailable.png" alt="" />
+
+      <div>
+        <h2 class="title" [textContent]="'Сервис временно недоступен'"></h2>
+
+        <p [textContent]="'Пожалуйста, попробуйте перезагрузить страницу позже'"></p>
+
+        <button (click)="refresh()">Обновить</button>
+      </div>
+    </ng-container>
+
+    <ng-template #small>
+      <span class="icon-warning"></span>
+
+      <p [textContent]="'Сервис временно недоступен'"></p>
+
+      <button (click)="refresh()">
+        Обновить
+      </button>
+    </ng-template>
+  </div>
+
+  <div *ngIf="pending" class="loader-container">
+    <img src="assets/images/loader-2.svg" alt="" class="loader" />
+  </div>
+</div>

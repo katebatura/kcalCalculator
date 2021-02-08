@@ -1,2 +1,11 @@
-khdj
-<router-outlet></router-outlet>
+<simple-notifications [options]="{
+  clickToClose: false,
+  maxStack: 1,
+  position: ['top', 'right'],
+  showProgressBar: false,
+  timeOut: 3000
+}"></simple-notifications>
+
+<div class="app-container">
+  <router-outlet></router-outlet>
+</div>

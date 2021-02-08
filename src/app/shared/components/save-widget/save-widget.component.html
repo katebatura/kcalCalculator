@@ -1,0 +1,31 @@
+<div class="card-wrapper">
+  <h2 class="title">{{mode === componentModes.Edit ? 'Изменить рецепт' : 'Сохранить рецепт'}}</h2>
+
+  <button *ngIf="mode === componentModes.Edit" class="round red card-pos-t-r" (click)="delete()">
+    <mat-icon>delete_outline</mat-icon>
+  </button>
+
+  <form class="row mb20" [formGroup]="form" novalidate>
+    <div class="col-3">
+      <div class="photo relative">
+        <div></div>
+
+        <button class="round small yellow pos-b-r">
+          <mat-icon>edit</mat-icon>
+        </button>
+      </div>
+    </div>
+
+    <div class="col-8">
+      <div class="input-wrapper">
+        <input formControlName="RECIPE_NAME" placeholder="Название" />
+      </div>
+    </div>
+  </form>
+
+  <div>{{data?.RECIPE_CCAL}}</div>
+
+  <footer>
+    <button class="intense" [btnLoad]="pending" (click)="save()" [textContent]="mode === componentModes.Edit ? 'Обновить' : 'Сохранить'"></button>
+  </footer>
+</div>

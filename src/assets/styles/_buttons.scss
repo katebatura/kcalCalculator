@@ -1,0 +1,62 @@
+@import "variables";
+
+button{
+  align-items: center;
+  background-color: $bg-color;
+  border: none;
+  border-radius: 18px;
+  box-shadow: $outset-shadow;
+  color: $main;
+  cursor: pointer;
+  display: flex;
+  font-size: 14px;
+  font-weight: 400;
+  letter-spacing: 1.25px;
+  line-height: 20px;
+  padding: 10px 20px;
+  position: relative;
+  text-align: center;
+  text-transform: uppercase;
+
+  mat-icon{
+    margin-right: 10px;
+  }
+
+  &.intense{
+    background: $main-gradient;
+    color: $bg-color;
+  }
+
+  &.round{
+    border-radius: 50%;
+    height: 34px;
+    padding: 5px;
+    width: 34px;
+
+    &.small{
+      height: 30px;
+      padding: 5px;
+      width: 30px;
+
+      mat-icon{
+        font-size: 20px;
+        height: 20px;
+        width: 20px;
+      }
+    }
+  }
+
+  &.menu{
+    box-shadow: $outset-shadow-sm-buttons-intense;
+    height: 40px;
+    padding: 8px;
+    width: 40px;
+  }
+
+  .button-loader{
+    left: calc((100% - 32px) / 2);
+    position: absolute;
+    top: 2px;
+    width: 32px;
+  }
+}

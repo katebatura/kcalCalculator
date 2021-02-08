@@ -1,0 +1,25 @@
+@import "variables";
+
+a {text-decoration: none;}
+
+.menu-item{
+  align-items: center;
+  color: $bg-color;
+  display: flex;
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 20px;
+  margin-bottom: 50px;
+  text-decoration: none;
+
+  &:hover{color: $dark-gray;}
+
+  &.active{
+    color: $dark-gray;
+
+    button{
+      box-shadow: $inset-shadow-sm-buttons-intense;
+      color: $dark-gray;
+    }
+  }
+}

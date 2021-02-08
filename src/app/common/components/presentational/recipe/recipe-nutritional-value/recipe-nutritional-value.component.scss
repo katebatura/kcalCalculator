@@ -1,0 +1,47 @@
+@import "variables";
+
+.main-circle{
+  background-color: $main;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  height: 75px;
+  padding: 5px;
+  width: 75px;
+
+  &.proteins{
+    background-color: $main;
+    color: $main;
+  }
+
+  &.carbos{
+    background-color: $yellow;
+    color: $yellow;
+  }
+
+  &.fats{
+    background-color: $red;
+    color: $red;
+  }
+}
+
+.circle{
+  align-items: center;
+  background-color: $bg-color;
+  border-radius: 50%;
+  box-shadow: $inset-shadow;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  font-size: 18px;
+  font-weight: 700;
+  height: 65px;
+  line-height: 16px;
+  margin-bottom: 20px;
+  width: 65px;
+}
+
+.nutritional-value{
+  color: $gray;
+  margin: 12px 0 40px;
+}

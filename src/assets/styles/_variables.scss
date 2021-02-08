@@ -1,3 +1,5 @@
+@import "functions";
+
 $bg-color: #f5f5f5;
 
 $dark-gray: #333333;
@@ -5,7 +7,40 @@ $gray: #4f4f4f;
 $light-gray: #828282;
 
 $light-blue: #00E0DD;
-$light-green: #96cba4;
-$green: #00663c;
+$second-color: #50A578;
+$main: #00663c;
 $red: #dd0000;
 $yellow: #ffb20f;
+
+$main-gradient: linear-gradient(0deg, get-color($main, 0.9) 0%, get-color($second-color) 90%);
+
+/*---------------------------box shadows---------------------------*/
+$black-shadow: 5px 5px 15px get-color(#000, .1);
+$black-shadow-blur: 10px 10px 20px get-color(#000, .1);
+$black-shadow-intense: 5px 5px 5px get-color($dark-gray, .9);
+$black-shadow-intense-blur: 5px 5px 10px get-color($dark-gray, .9);
+$black-shadow-disable: 3px 3px 5px get-color(#000, .8);
+$black-shadow-menu: 15px 15px 20px get-color(#000, .2);
+
+$white-shadow: -5px -5px 15px get-color(#fff, .9);
+$white-shadow-blur: -10px -10px 20px get-color(#fff, .9);
+$white-shadow-intense: -5px -5px 5px get-color(#fff, .15);
+$white-shadow-intense-blur: -5px -5px 10px get-color(#fff, .15);
+$white-shadow-disable: -3px -3px 5px get-color(#fff, .15);
+$white-shadow-menu: -15px -15px 20px get-color(#fff, .05);
+
+$active-shadow: 0 0 5px 2px get-color($main, .5);
+$error-shadow: 0 0 5px 2px get-color($red, .5);
+
+$outset-shadow: create-shadow('out', $black-shadow, $white-shadow);
+$inset-shadow: create-shadow('inset', $black-shadow, $white-shadow);
+$inset-shadow-form-active: create-shadow('inset', $black-shadow, $white-shadow, $active-shadow);
+$inset-shadow-form-error: create-shadow('inset', $black-shadow, $white-shadow, $error-shadow);
+$inset-shadow-form-disable: create-shadow('inset', $black-shadow-disable, $white-shadow-disable);
+$outset-shadow-form-disable: create-shadow('out', $black-shadow-disable, $white-shadow-disable);
+
+$menu-outset-shadow: create-shadow('out', $black-shadow-blur, $white-shadow-blur);
+$menu-inset-shadow: create-shadow('inset', $black-shadow-menu, $white-shadow-menu);
+
+$inset-shadow-sm-buttons-intense: create-shadow('inset', $black-shadow-intense, $white-shadow-intense);
+$outset-shadow-sm-buttons-intense: create-shadow('out', $black-shadow-intense-blur, $white-shadow-intense-blur);

@@ -9,13 +9,34 @@ import {MatDatepickerModule} from "@angular/material/datepicker";
 import {MatDialogModule} from "@angular/material/dialog";
 import {MatMenuModule} from '@angular/material/menu';
 import {MatTooltipModule} from '@angular/material/tooltip';
+import {MatIconModule} from '@angular/material/icon';
+import {MatSlideToggleModule} from '@angular/material/slide-toggle';
+
+import {ServiceUnavailableComponent} from "./components/service-unavailable/service-unavailable.component";
+import {SaveWidgetComponent} from "./components/save-widget/save-widget.component";
+import {ConfirmDialogComponent} from './components/dialogs/confirm-dialog/confirm-dialog.component';
+
+import {BtnLoadDirective} from './directives/btn-load.directive';
+import {PreloaderDirective} from './directives/preloader.directive';
+import {UnavailableDirective} from "./directives/unavailable.directive";
 
 @NgModule({
-  declarations: [],
+  declarations: [
+    ServiceUnavailableComponent,
+    SaveWidgetComponent,
+    ConfirmDialogComponent,
+
+    BtnLoadDirective,
+    PreloaderDirective,
+    UnavailableDirective,
+  ],
   imports: [
     FormsModule,
     ReactiveFormsModule,
-    PerfectScrollbarModule
+    PerfectScrollbarModule,
+
+    MatIconModule,
+    MatDialogModule,
   ],
   exports: [
     CommonModule,
@@ -27,6 +48,15 @@ import {MatTooltipModule} from '@angular/material/tooltip';
     MatDialogModule,
     MatMenuModule,
     MatTooltipModule,
+    MatIconModule,
+    MatSlideToggleModule,
+
+    SaveWidgetComponent,
+    ConfirmDialogComponent,
+
+    BtnLoadDirective,
+    PreloaderDirective,
+    UnavailableDirective,
   ]
 })
 export class SharedModule{}
